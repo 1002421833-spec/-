@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 מִבְחַן אִתּוּר לְנִבְחֶרֶת מַדְּעָנֵי הַמָּחָר שֶׁל אַשְׁדּוֹד 🧪</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* אנימציות רקע */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="70" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        
+        .container {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 950px;
+            min-height: 700px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        /* דקורציה עליונה */
+        .container::before {
+            content: '🧬🔬⚗️🌟🚀';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+        
+        .screen {
+            display: none;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        /* מסך פתיחה */
+        .welcome-screen h1 {
+            color: #2d3748;
+            font-size: 2.4rem;
+            margin: 30px 0;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 25px 0;
+            text-align: right;
+            border-right: 6px solid #4299e1;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.15);
+            position: relative;
+        }
+        
+        .instructions::before {
+            content: '📋';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 2rem;
+        }
+        
+        .instructions h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-right: 20px;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+        
+        .instructions li {
+            margin: 12px 0;
+            color: #4a5568;
+            font-size: 1.1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.1);
+        }
+        
+        .instructions li:before {
+            content: "✨ ";
+            color: #48bb78;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        /* טופס פרטים */
+        .student-form {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 25px 0;
+            text-align: right;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .student-form::before {
+            content: '👤';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 2rem;
+        }
+        
+        .student-form h3 {
+            margin-bottom: 25px;
+            color: #2d3748;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            text-align: right;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2d3748;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            text-align: right;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .required {
+            color: #e53e3e;
+        }
+        
+        .optional {
+            color: #718096;
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+        
+        /* כפתורים */
+        .btn {
+            background: linear-gradient(45deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
+            margin: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(72, 187, 120, 0.4);
+        }
+        
+        .btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* מסך שאלות */
+        .progress-container {
+            margin: 25px 0;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            height: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #48bb78, #38a169, #68d391);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .question-counter {
+            color: #4a5568;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .question-counter::before {
+            content: '❓ ';
+            margin-left: 10px;
+        }
+        
+        .timer-display {
+            color: #4a5568;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timer-display::before {
+            content: '⏰ ';
+            margin-left: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin: 35px 0;
+            line-height: 1.7;
+            text-align: right;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border-right: 6px solid #4299e1;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.15);
+            position: relative;
+        }
+        
+        .question-text::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 2rem;
+        }
+        
+        .answers-container {
+            margin: 35px 0;
+        }
+        
+        .answer-option {
+            background: white;
+            border: 3px solid #e2e8f0;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: right;
+            font-size: 1.3rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .answer-option::before {
+            content: '💡';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .answer-option:hover {
+            border-color: #4299e1;
+            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.2);
+        }
+        
+        .answer-option:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        .answer-option.selected {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            box-shadow: 0 10px 25px rgba(72, 187, 120, 0.2);
+        }
+        
+        .answer-option.selected::before {
+            content: '✅';
+            opacity: 1;
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        .answer-option input[type="radio"] {
+            margin-right: 20px;
+            transform: scale(1.8);
+            flex-shrink: 0;
+            accent-color: #48bb78;
+        }
+        
+        .answer-option label {
+            flex: 1;
+            text-align: right;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        
+        /* ניווט */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: linear-gradient(45deg, #3182ce, #2c5282);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(66, 153, 225, 0.4);
+        }
+        
+        .nav-btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* מסך תוצאות */
+        .results-screen h2 {
+            color: #2d3748;
+            font-size: 2.8rem;
+            margin: 25px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .score-display {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 35px 0;
+            padding: 25px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .score-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .score-excellent {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+        }
+        
+        .score-excellent::after {
+            content: '🌟 מעולה! 🌟';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .score-good {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            color: white;
+        }
+        
+        .score-good::after {
+            content: '👍 טוב מאוד! 👍';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .score-needs-improvement {
+            background: linear-gradient(135deg, #f56565, #e53e3e);
+            color: white;
+        }
+        
+        .score-needs-improvement::after {
+            content: '💪 כדאי להתאמן עוד! 💪';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .results-details {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: right;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .question-result {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 15px;
+            border-right: 6px solid #e2e8f0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .question-result:hover {
+            transform: translateX(-5px);
+        }
+        
+        .question-result.correct {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-right-color: #48bb78;
+        }
+        
+        .question-result.correct::before {
+            content: '✅';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .question-result.partial {
+            background: linear-gradient(135deg, #fffbf0 0%, #fef5e7 100%);
+            border-right-color: #ed8936;
+        }
+        
+        .question-result.partial::before {
+            content: '⚡';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .question-result.incorrect {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-right-color: #f56565;
+        }
+        
+        .question-result.incorrect::before {
+            content: '❌';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .question-result h4 {
+            margin-bottom: 15px;
+            color: #2d3748;
+            font-size: 1.2rem;
+        }
+        
+        .answer-comparison {
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+        
+        .correct-answer {
+            color: #38a169;
+            font-weight: bold;
+        }
+        
+        .correct-answer::before {
+            content: '✓ ';
+            margin-left: 5px;
+        }
+        
+        .user-answer {
+            color: #4a5568;
+        }
+        
+        .user-answer::before {
+            content: '👤 ';
+            margin-left: 5px;
+        }
+        
+        .points-earned {
+            font-weight: bold;
+            float: left;
+            background: #4299e1;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+        
+        /* הודעות */
+        .message {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .message.success {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            color: #38a169;
+            border: 3px solid #48bb78;
+        }
+        
+        .message.success::before {
+            content: '🎉';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+        }
+        
+        .message.error {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            color: #e53e3e;
+            border: 3px solid #f56565;
+        }
+        
+        .message.error::before {
+            content: '⚠️';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+        }
+        
+        /* הודעת השראה */
+        .inspiration-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            margin: 35px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .inspiration-message::before {
+            content: '🌟✨🚀';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+        
+        .inspiration-message h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        
+        .inspiration-message p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .quote {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 20px;
+            font-style: italic;
+            font-size: 1.2rem;
+            border-right: 5px solid rgba(255,255,255,0.4);
+            margin-top: 25px;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '💭';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* רספונסיבי */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .score-display {
+                font-size: 3rem;
+            }
+            
+            .welcome-screen h1 {
+                font-size: 2rem;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+                padding: 25px;
+            }
+            
+            .answer-option {
+                padding: 20px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- מסך פתיחה -->
+        <div class="screen active" id="welcomeScreen">
+            <!-- מיתוג מרכז המדעים -->
+            <div style="background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%); color: white; padding: 25px; border-radius: 20px; margin-bottom: 30px; text-align: center; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.3); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; opacity: 0.7;">🔬⚗️🧬</div>
+                <h2 style="font-size: 1.8rem; margin: 20px 0 15px 0; color: #90cdf4; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">מֶרְכַּז הַמַּדָּעִים "אֶשְׁכּוֹל הַפַּיִס" אַשְׁדּוֹד</h2>
+                <p style="font-size: 1.1rem; margin: 0; opacity: 0.9; line-height: 1.5;">🌟 מוֹבִילִים אֶת דּוֹר הֶעָתִיד לְמַדָּע וְטֶכְנוֹלוֹגְיָה 🌟</p>
+            </div>
+            
+            <div class="welcome-icon">🧪🚀🌟</div>
+            <h1>מִבְחַן אִתּוּר לְנִבְחֶרֶת מַדְּעָנֵי הַמָּחָר שֶׁל אַשְׁדּוֹד</h1>
+            
+            <div style="background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%); padding: 35px; border-radius: 20px; margin: 30px 0; text-align: center; border: 3px solid #4fd1c7; position: relative;">
+                <div style="position: absolute; top: 15px; left: 15px; font-size: 2rem;">🎯</div>
+                <h3 style="color: #234e52; margin-bottom: 25px; font-size: 1.6rem; margin-right: 20px;">מַדְּעָנִים צְעִירִים!</h3>
+                <p style="color: #285e61; font-size: 1.4rem; line-height: 1.8; margin-bottom: 30px; font-weight: 500;">
+                    צֶוֶת מֶרְכַּז הַמַּדָּעִים "אֶשְׁכּוֹל הַפַּיִס" מְעֻנְיָן לִיצֹר נִבְחֶרֶת שֶׁל מַדְּעָנִים צְעִירִים - 
+                    תַּלְמִידִים סַקְרְנִים, יְצִירָתִיִּים וְאִכְפַּתִּיִּים כְּלַפֵּי הַסְּבִיבָה שֶׁלָּנוּ! 🌍💚🔬
+                </p>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; margin: 25px 0; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);">
+                    <p style="font-size: 1.5rem; font-weight: bold; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        🚀 הֶעָתִיד כְּבָר כָּאן - בּוֹאוּ לְהוֹבִיל אוֹתוֹ! 🌟
+                    </p>
+                </div>
+                <p style="color: #285e61; font-size: 1.2rem; line-height: 1.6; margin-bottom: 20px;">
+                    בַּמִּבְחָן הַזֶּה 10 שְׁאֵלוֹת רַבּוֹת בְּרֵרָה - לְכָל שְׁאֵלָה 4 תְּשׁוּבוֹת מֻצָּעוֹת אַךְ רַק אַחַת נְכוֹנָה. 
+                    בַּחֲרוּ אֶת הַתְּשׁוּבָה הַנְּכוֹנָה וְהַמְּדֻיֶּקֶת בְּיוֹתֵר. 📝
+                </p>
+                <div style="background: rgba(255,255,255,0.7); padding: 25px; border-radius: 15px; margin-top: 25px; border-right: 4px solid #38b2ac;">
+                    <p style="color: #1a365d; font-size: 1.2rem; font-weight: bold; margin: 0 0 15px 0; line-height: 1.7;">
+                        💙 הַמִּבְחָן בּוֹדֵק חֲשִׁיבָה מַדָּעִית, יְכֹלֶת נִתּוּחַ וִיצִירָתִיּוּת - לֹא יֶדַע קַיָּם. 
+                        תְּנוּ לַחֲשִׁיבָה הַבִּקָּרְתִּית שֶׁלָּכֶם לְהוֹבִיל אֶתְכֶם לִתְשׁוּבוֹת הַנְּכוֹנוֹת! 🔍✨
+                    </p>
+                    <p style="color: #2d3748; font-size: 1.1rem; margin: 0; padding: 15px; background: rgba(255,255,255,0.8); border-radius: 10px; border-right: 3px solid #4299e1;">
+                        📝 <strong>חָשׁוּב לָדַעַת:</strong> הַמִּבְחָן אֵינוֹ מְשַׁמֵּשׁ כְּצִיּוּן לַתְּעוּדָה וְאֵינוֹ מַשְׁפִּיעַ עַל הַצִּיּוּנִים בְּבֵית הַסֵּפֶר. 
+                        זֶהוּ מִבְחַן אִתּוּר בִּלְבַד לְמַטְּרַת בְּחִירַת נִבְחֶרֶת מַדְּעָנֵי הַמָּחָר! 🎯
+                    </p>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>הַנְחָיוֹת נוֹסָפוֹת:</h3>
+                <ul>
+                    <li>נִתָּן לַחֲזֹר לִשְׁאֵלוֹת קוֹדְמוֹת וּלְשַׁנּוֹת תְּשׁוּבוֹת 🔄</li>
+                    <li>זְמַן הַמִּבְחָן מֻגְבָּל לְשִׁעוּר (45 דַּקּוֹת) ⏰</li>
+                    <li>קִרְאוּ כָּל שְׁאֵלָה בְּעִיּוּן לִפְנֵי מַתַּן הַתְּשׁוּבָה 👀</li>
+                    <li>חִשְׁבוּ עַל הַתְּשׁוּבָה הַהֶגְיוֹנִית וְהַמַּדָּעִית בְּיוֹתֵר 🤔</li>
+                </ul>
+            </div>
+            
+            <div class="student-form">
+                <h3>פְּרָטֵי הַתַּלְמִיד/ה</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">שֵׁם פְּרָטִי <span class="required">*</span></label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">שֵׁם מִשְׁפָּחָה <span class="required">*</span></label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentClass">כִּתָּה <span class="required">*</span></label>
+                        <select id="studentClass" required>
+                            <option value="">בחר כיתה</option>
+                            <option value="ב'1">ב'1</option>
+                            <option value="ב'2">ב'2</option>
+                            <option value="ב'3">ב'3</option>
+                            <option value="ב'4">ב'4</option>
+                            <option value="ב'5">ב'5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">בֵּית סֵפֶר <span class="required">*</span></label>
+                        <input type="text" id="school" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parentPhone">טֵלֵפוֹן הוֹרָה <span class="optional">(אוֹפְּצְיוֹנָלִי) 📱</span></label>
+                        <input type="tel" id="parentPhone" placeholder="050-1234567 (רק אם אתה יודע)">
+                    </div>
+                    <div class="form-group">
+                        <label for="parentName">שֵׁם הוֹרָה <span class="required">*</span></label>
+                        <input type="text" id="parentName" required>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="startQuiz()">הַתְחֵל/י אֶת הַמִּבְחָן 🚀</button>
+        </div>
+        
+        <!-- מסך שאלות -->
+        <div class="screen" id="questionScreen">
+            <div class="progress-container">
+                <div class="question-counter" id="questionCounter">שְׁאֵלָה 1 מִתּוֹךְ 10</div>
+                <div class="timer-display" id="timerDisplay">זְמַן נוֹתַר: 45:00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                </div>
+            </div>
+            
+            <div class="question-text" id="questionText"></div>
+            
+            <div class="answers-container" id="answersContainer">
+                <!-- תשובות יוצגו כאן -->
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>→ הַקּוֹדֵם</button>
+                <button class="nav-btn" id="nextBtn" onclick="nextQuestion()">הַבָּא ←</button>
+            </div>
+        </div>
+        
+        <!-- מסך תוצאות -->
+        <div class="screen" id="resultsScreen">
+            <!-- מיתוג מרכז המדעים בסוף -->
+            <div style="background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%); color: white; padding: 25px; border-radius: 20px; margin-bottom: 30px; text-align: center; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.3); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; opacity: 0.7;">🏆🔬🌟</div>
+                <h2 style="font-size: 1.8rem; margin: 20px 0 15px 0; color: #90cdf4; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">מֶרְכַּז הַמַּדָּעִים "אֶשְׁכּוֹל הַפַּיִס" אַשְׁדּוֹד</h2>
+                <p style="font-size: 1.1rem; margin: 0; opacity: 0.9; line-height: 1.5;">🎓 גֵּאִים בָּכֶם עַל הִשְׁתַּתְּפוּתְכֶם בַּמַּסָּע הַמַּדָּעִי שֶׁלָּנוּ! 🎓</p>
+            </div>
+            
+            <h2>הַמִּבְחָן הֻשְׁלַם בְּהַצְלָחָה! 🎉</h2>
+            
+            <div id="scoreContainer"></div>
+            
+            <div style="background: linear-gradient(135deg, #48bb78, #38a169); color: white; padding: 35px; border-radius: 25px; margin: 35px 0; text-align: center; box-shadow: 0 15px 35px rgba(72, 187, 120, 0.3); position: relative;">
+                <div style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%); font-size: 2rem;">🎊</div>
+                <h3 style="font-size: 2.2rem; margin-bottom: 20px; margin-top: 30px;">כָּל הַכָּבוֹד! 👏</h3>
+                <p style="font-size: 1.4rem; margin: 0;">הַמִּבְחָן הֻשְׁלַם בְּהַצְלָחָה!</p>
+            </div>
+            
+            <div id="saveMessage" class="message" style="display: none;"></div>
+            
+
+
+            <div class="inspiration-message">
+                <h3>🌟 כָּל הַכָּבוֹד עַל הַשְׁלָמַת הַמִּבְחָן! 🌟</h3>
+                <p>המדע מתחיל בתמיהה ובסקרנות - כל שאלה שאתם שואלים היא צעד ראשון לגילוי חדש! 🔬✨</p>
+                <p>זִכְרוּ - מַדָּע הוּא הַרְפַּתְקָה מְרַתֶּקֶת שֶׁל גִּלּוּיִים וַחֲקִירָה. כָּל שְׁאֵלָה שֶׁאַתֶּם שׁוֹאֲלִים מְקָרֶבֶת אֶתְכֶם צַעַד נוֹסָף לַהֲבָנַת הָעוֹלָם הַנִּפְלָא שֶׁסְּבִיבֵנוּ. הַמַּסָּע לְמַדָּע מַתְחִיל בְּסַקְרָנוּת - וְהִיא כְּבָר בְּתוֹכְכֶם! 🔬🌍</p>
+                
+                <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 20px; margin: 25px 0; border-right: 5px solid rgba(255,255,255,0.5);">
+                    <h4 style="color: #ffd700; margin-bottom: 15px; font-size: 1.3rem;">💌 הוֹדָעָה מְיֻחֶדֶת מֵהַצֶּוֶת שֶׁלָּנוּ:</h4>
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin: 0;">
+                        בְּמֶרְכַּז הַמַּדָּעִים "אֶשְׁכּוֹל הַפַּיִס" אֲנַחְנוּ מַאֲמִינִים שֶׁכָּל יֶלֶד הוּא מַדְּעָן בְּפּוֹטֶנְצִיָּה! 
+                        הַסַּקְרָנוּת שֶׁלָּכֶם, הַשְּׁאֵלוֹת שֶׁאַתֶּם שׁוֹאֲלִים, וְהָרָצוֹן שֶׁלָּכֶם לַחֲקֹר - זֶה בְּדִיּוּק מָה שֶׁהוֹפֵךְ אֶתְכֶם לַמְּיֻחָדִים. 
+                        בֵּין אִם תִּתְקַבְּלוּ לַנִּבְחֶרֶת וּבֵין אִם לֹא, זִכְרוּ שֶׁהַמַּסָּע הַמַּדָּעִי שֶׁלָּכֶם רַק מַתְחִיל! 🚀💫
+                    </p>
+                </div>
+                
+                <div class="quote">
+                    "הַמַּדְּעָן הַגָּדוֹל בְּיוֹתֵר הוּא הַיֶּלֶד שֶׁבְּתוֹכֵנוּ - זֶה שֶׁתָּמִיד שׁוֹאֵל 'לָמָּה?' וְ'אֵיךְ?'" 🧒✨
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 35px 0;">
+                <button class="btn" onclick="downloadResults()" style="background: linear-gradient(45deg, #28a745, #20c997);">📥 הוֹרֵד תּוֹצָאוֹת</button>
+                <button class="btn" onclick="emailResults()" style="background: linear-gradient(45deg, #007bff, #6610f2);">📧 שְׁלַח בְּמֵיְל</button>
+                <button class="btn" onclick="printResults()" style="background: linear-gradient(45deg, #6c757d, #495057);">🖨️ הֶדְפֵּס</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "חוֹקְרִים בָּדְקוּ אִם אֲכִילַת אֲרוּחַת בֹּקֶר מַשְׁפִּיעָה עַל הַצְלָחָה בַּלִּמּוּדִים. הֵם מָצְאוּ שֶׁתַּלְמִידִים שֶׁאָכְלוּ אֲרוּחַת בֹּקֶר קִבְּלוּ צִיּוּנִים גְּבוֹהִים יוֹתֵר בְּמִבְחָנִים מֵאֲשֶׁר תַּלְמִידִים שֶׁלֹּא אָכְלוּ. מַהִי הַמַּסְקָנָה הַנְּכוֹנָה בְּיוֹתֵר?",
+                answers: [
+                    "אֲכִילַת אֲרוּחַת בֹּקֶר תָּמִיד מַבְטִיחָה צִיּוּנִים טוֹבִים",
+                    "יִתָּכֵן שֶׁאֲכִילַת אֲרוּחַת בֹּקֶר קְשׁוּרָה לְשִׁפּוּר בְּרִכּוּז וְהֶשֵּׂגִים",
+                    "תַּלְמִידִים שֶׁלֹּא אוֹכְלִים בַּבֹּקֶר לֹא יְכוֹלִים לְהַצְלִיחַ בַּלִּמּוּדִים",
+                    "הַצִּיּוֹנִים מֻשְׁפָּעִים רַק מֵאֹכֶל וְלֹא מִשּׁוּם דָּבָר אַחֵר"
+                ],
+                correct: 1,
+                partial: []
+            },
+            {
+                text: "מַדּוּעַ צוּרַת הַיָּרֵחַ מִשְׁתַּנָּה?",
+                answers: [
+                    "הַיָּרֵחַ מְשַׁנֶּה צוּרָה כְּדֵי לְהַרְאוֹת לָנוּ תַּאֲרִיכִים",
+                    "הַיָּרֵחַ מִסְתּוֹבֵב סְבִיב כַּדּוּר הָאָרֶץ וְהָאוֹר מֵהַשֶּׁמֶשׁ גּוֹרֵם לָנוּ לִרְאוֹת חֲלָקִים שׁוֹנִים מִמֶּנּוּ",
+                    "הַיָּרֵחַ מִתְכַּוֵּץ וּמִתְרַחֵב כָּל חֹדֶשׁ",
+                    "הָעֲנָנִים מְכַסִּים אֶת הַיָּרֵחַ וְחוֹשְׂפִים אוֹתוֹ בְּצוּרָה שׁוֹנָה"
+                ],
+                correct: 1,
+                partial: []
+            },
+            {
+                text: "נִסּוּי בָּדַק הַאִם שְׁמִיעַת מוּזִיקָה בָּרֶקַע עוֹזֶרֶת בִּקְרִיאָה. חֵלֶק מֵהַתַּלְמִידִים קָרְאוּ טֶקְסְטִים בְּשֶׁקֶט, וְחֵלֶק קָרְאוּ עִם מוּזִיקָה קְלָסִית בָּרֶקַע. נִמְצָא שֶׁקְּבוּצַת הַתַּלְמִידִים שֶׁשָּׁמְעָה מוּזִיקָה קִבְּלָה צִיּוּנִים גְּבוֹהִים יוֹתֵר בַּהֲבָנַת הַנִּקְרָא. אֵיזוֹ שְׁאֵלָה בִּקָּרְתִּית חָשׁוּב לִשְׁאֹל לִפְנֵי שֶׁמַּסִּיקִים מַסְקָנוֹת?",
+                answers: [
+                    "הַאִם כָּל הַתַּלְמִידִים אוֹהֲבִים מוּזִיקָה קְלָסִית?",
+                    "הַאִם הַנִּסּוּי נֶעֱרַךְ בְּבֵית סֵפֶר אוֹ בַּבַּיִת?",
+                    "הַאִם הַתַּלְמִידִים קִבְּלוּ אֶת אוֹתוֹ טֵקְסְט בְּדִיּוּק לַקְּרִיאָה?",
+                    "כַּמָּה זְמַן נִמְשַׁךְ הַשִּׁעוּר?"
+                ],
+                correct: 2,
+                partial: [0, 3]
+            },
+            {
+                text: "הִשְׁאַרְנוּ קֶמַח בָּאָרוֹן לִזְמַן רַב. כְּשֶׁפָּתַחְנוּ אוֹתוֹ גִּלִּינוּ חֲרָקִים. מֵאֵיפֹה הֵם הִגִּיעוּ?",
+                answers: [
+                    "הַחֲרָקִים נוֹצְרוּ פִּתְאוֹם בְּתוֹךְ הַקֶּמַח",
+                    "הַקֶּמַח זֹהַם בְּחַיְדַּקִּים שֶׁמֵּהֶם נוֹצְרוּ הַחֲרָקִים",
+                    "הַחֲרָקִים הִגִּיעוּ כְּבֵיצִים זְעִירִים שֶׁנִּכְנְסוּ בְּעֵת הָאֲרִיזָה אוֹ מֵהַסְּבִיבָה",
+                    "הָאָרוֹן יָצַר אֶת הַחֲרָקִים מִתּוֹךְ קֶמַח"
+                ],
+                correct: 2,
+                partial: []
+            },
+            {
+                text: "בְּמֶחְקָר עַל פְּעִילוּת גּוּפָנִית, נִמְצָא שֶׁתַּלְמִידִים שֶׁרָקְדוּ 20 דַּקּוֹת לִפְנֵי שִׁעוּר חֶשְׁבּוֹן פָּתְרוּ יוֹתֵר תַּרְגִּילִים בְּהַצְלָחָה מֵאֲשֶׁר תַּלְמִידִים שֶׁלֹּא עָשׂוּ פְּעִילוּת גּוּפָנִית. מָה נִתָּן לְהַסִּיק מֵהַתּוֹצָאָה?",
+                answers: [
+                    "רִקּוּד הוֹפֵךְ אֶת כֻּלָּם לְטוֹבִים בְּחֶשְׁבּוֹן",
+                    "פְּעִילוּת גּוּפָנִית לִפְנֵי לְמִידָה יְכוֹלָה לְשַׁפֵּר בִּצּוּעִים שִׂכְלִיִּים",
+                    "תַּלְמִידִים שֶׁרָקְדוּ הָיוּ פְּחוֹת עֲיֵפִים בְּשִׁעוּר חֶשְׁבּוֹן",
+                    "תַּלְמִידִים שֶׁלֹּא רוֹקְדִים לֹא יְכוֹלִים לְהַצְלִיחַ בְּחֶשְׁבּוֹן"
+                ],
+                correct: 1,
+                partial: []
+            },
+            {
+                text: "מָה קוֹרֶה לְמַיִם שֶׁהוֹפְכִים לְאֵדִים?",
+                answers: [
+                    "הֵם נֶעֱלָמִים לַחֲלוּטִין",
+                    "הֵם הוֹפְכִים לְגַז וּמִתְעַרְבְּבִים בָּאֲוִיר",
+                    "הֵם הוֹפְכִים לְקֶרַח",
+                    "הֵם מְשַׁנִּים צֶבַע"
+                ],
+                correct: 1,
+                partial: []
+            },
+            {
+                text: "מַדְּעָנִים עָקְבוּ אַחֲרֵי יְלָדִים שֶׁמְּשַׂחֲקִים בְּמִשְׂחֲקֵי מַחְשֵׁב, הֵם גִּלּוּ שֶׁיְּלָדִים שֶׁשִּׁחֲקוּ בְּמִשְׂחֲקֵי אַסְטְרָטֶגְיָה פָּתְרוּ בְּעָיוֹת מַדָּעִיּוֹת מַהֵר יוֹתֵר מִיְּלָדִים שֶׁלֹּא שִׂחֲקוּ. אֵיזֶה הֶסְבֵּר נוֹסָף יָכוֹל לִהְיוֹת נָכוֹן?",
+                answers: [
+                    "אוּלַי הַיְּלָדִים שֶׁבָּחֲרוּ לְשַׂחֵק בְּאַסְטְרָטֶגְיָה כְּבָר הָיוּ טוֹבִים בְּפִתְרוֹן בְּעָיוֹת",
+                    "מִשְׂחֲקֵי מַחְשֵׁב תָּמִיד מְשַׁפְּרִים חֲשִׁיבָה מַדָּעִית",
+                    "מִשְׂחֲקֵי מַחְשֵׁב הֵם הַדֶּרֶךְ הַיְּחִידָה לִלְמֹד",
+                    "יְלָדִים שֶׁלֹּא מְשַׂחֲקִים במַחְשֵׁב לֹא יְכוֹלִים לִהְיוֹת יְצִירָתִיִּים"
+                ],
+                correct: 0,
+                partial: []
+            },
+            {
+                text: "כַּדּוּר הָאָרֶץ מִסְתּוֹבֵב כָּל הַזְּמַן סְבִיב עַצְמוֹ, אֲבָל כְּשֶׁאֲנַחְנוּ עוֹמְדִים עָלָיו, אֲנַחְנוּ לֹא נוֹפְלִים. לָמָּה זֶה קוֹרֶה?",
+                answers: [
+                    "כִּי כּוֹחַ הַמְּשִׁיכָה מוֹשֵׁךְ אוֹתָנוּ לְמַטָּה אֶל מֶרְכַּז כַּדּוּר הָאָרֶץ וְחָזָק יוֹתֵר מֵהַסִּיבוּב",
+                    "כִּי הַסִּבּוּב שֶׁל כַּדּוּר הָאָרֶץ מְיַצֵּר כּוֹחַ שֶׁמַּחֲזִיק אוֹתָנוּ בָּאֲוִיר",
+                    "כִּי הָאֲוִיר סְבִיבֵנוּ מוֹנֵעַ מֵאִתָּנוּ לִפֹּל",
+                    "כִּי אָנוּ מְחֻבָּרִים לְכַדּוּר הָאָרֶץ בְּחוּטִים בִּלְתִּי נִרְאִים"
+                ],
+                correct: 0,
+                partial: []
+            },
+            {
+                text: "אַסְטְרוֹנָאוּטִים רוֹצִים לְגַדֵּל יְרָקוֹת בֶּחָלָל. אֵיזֶה רַעֲיוֹן יָכוֹל לַעֲזֹר לָהֶם?",
+                answers: [
+                    "לָשִׂים אֶת הַזְּרָעִים עַל הַשֻּׁלְחָן בַּחֲלָלִית",
+                    "לִזְרֹעַ אֶת הַזְּרָעִים בָּאֲוִיר הַפָּתוּחַ שֶׁל הַחֲלָלִית",
+                    "לְהִשְׁתַּמֵּשׁ בְּמַצָּע מַתְאִים עִם מַיִם וְאוֹר מְלָאכוּתִי",
+                    "לְהַנִּיחַ אֶת הַזְּרָעִים לְיַד הַחַלּוֹן בְּלִי אֲדָמָה אוֹ מַיִם"
+                ],
+                correct: 2,
+                partial: []
+            },
+            {
+                text: "חוֹקֵר רוֹצֶה לִבְדֹּק אִם צְמָחִים יְכוֹלִים לִגְדֹּל בְּלִי אוֹר. אֵיזֶה טִפּוּל יוֹכִיחַ זֹאת?",
+                answers: [
+                    "לָתֵת לְכָל הַצְּמָחִים כַּמּוּת אוֹר זֵהָה וְלִבְדֹּק מִי גָּדֵל יוֹתֵר",
+                    "לָתֵת לְחֵלֶק מֵהַצְּמָחִים אוֹר וּלְחֵלֶק אַחֵר לֹא לָתֵת אוֹר בִּכְלָל, וְלִרְאוֹת מָה קוֹרֶה",
+                    "לָתֵת לְכָל הַצְּמָחִים מַיִם בִּלְבַד בְּלִי אוֹר",
+                    "לָשִׂים אֶת כָּל הַצְּמָחִים בְּאוֹתוֹ מָקוֹם וּלְקַוּוֹת שֶׁמִּישֶׁהוּ יִגְדַּל"
+                ],
+                correct: 1,
+                partial: []
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let studentData = {};
+        let totalScore = 0;
+        let detailedResults = [];
+        let timeLeft = 45 * 60; // 45 דקות בשניות
+        let timerInterval;
+
+        function startQuiz() {
+            // בדיקת שדות חובה (ללא טלפון הורה)
+            const requiredFields = ['firstName', 'lastName', 'studentClass', 'school', 'parentName'];
+            let isValid = true;
+            
+            for (let field of requiredFields) {
+                const element = document.getElementById(field);
+                if (!element.value.trim()) {
+                    element.style.borderColor = '#f56565';
+                    element.style.boxShadow = '0 0 0 4px rgba(245, 101, 101, 0.15)';
+                    isValid = false;
+                } else {
+                    element.style.borderColor = '#e2e8f0';
+                    element.style.boxShadow = 'none';
+                }
+            }
+            
+            if (!isValid) {
+                alert('🚨 אָנָּא מָלֵא אֶת כָּל הַשָּׂדוֹת הַחוֹבָה');
+                return;
+            }
+            
+            // שמירת נתוני התלמיד
+            studentData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                studentClass: document.getElementById('studentClass').value,
+                school: document.getElementById('school').value.trim(),
+                parentPhone: document.getElementById('parentPhone').value.trim() || 'לא צוין',
+                parentName: document.getElementById('parentName').value.trim(),
+                timestamp: new Date().toLocaleString('he-IL')
+            };
+            
+            // מעבר למסך השאלות
+            document.getElementById('welcomeScreen').classList.remove('active');
+            document.getElementById('questionScreen').classList.add('active');
+            
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('⏰ הַזְּמַן נִגְמַר! הַמִּבְחָן יִסְתַּיֵּם כָּעֵת.');
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const timerDisplay = document.getElementById('timerDisplay');
+            
+            timerDisplay.textContent = `זְמַן נוֹתַר: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // שינוי צבע כשנותרו פחות מ-5 דקות
+            if (timeLeft <= 300) { // 5 דקות
+                timerDisplay.style.color = '#e53e3e';
+                timerDisplay.style.background = '#fff5f5';
+                timerDisplay.style.animation = 'pulse 1s infinite';
+            } else if (timeLeft <= 600) { // 10 דקות
+                timerDisplay.style.color = '#ed8936';
+                timerDisplay.style.background = '#fffbf0';
+            }
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            
+            // עדכון מונה ופס התקדמות
+            document.getElementById('questionCounter').textContent = `שְׁאֵלָה ${currentQuestion + 1} מִתּוֹךְ ${questions.length}`;
+            document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+            
+            // הצגת השאלה
+            document.getElementById('questionText').textContent = question.text;
+            
+            // הצגת התשובות
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-option';
+                answerDiv.onclick = () => selectAnswer(index);
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'answer';
+                radio.value = index;
+                radio.checked = userAnswers[currentQuestion] === index;
+                
+                const label = document.createElement('label');
+                label.textContent = answer;
+                label.style.cursor = 'pointer';
+                
+                answerDiv.appendChild(radio);
+                answerDiv.appendChild(label);
+                
+                if (userAnswers[currentQuestion] === index) {
+                    answerDiv.classList.add('selected');
+                }
+                
+                answersContainer.appendChild(answerDiv);
+            });
+            
+            // עדכון כפתורי ניווט
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            updateNextButton();
+        }
+
+        function updateNextButton() {
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (currentQuestion === questions.length - 1) {
+                // בדיקה אם יש שאלות שלא נענו
+                const unansweredQuestions = [];
+                for (let i = 0; i < questions.length; i++) {
+                    if (userAnswers[i] === undefined || userAnswers[i] === null) {
+                        unansweredQuestions.push(i + 1);
+                    }
+                }
+                
+                if (unansweredQuestions.length > 0) {
+                    // כפתור אזהרה
+                    nextBtn.textContent = 'לֹא עָנִיתָ עַל כָּל הַשְּׁאֵלוֹת. עָלֶיךָ לִבְדֹּק שֶׁעָנִית עַל הַכֹּל לִפְנֵי הַגָּשַׁת הַמִּבְחָן.';
+                    nextBtn.style.background = 'linear-gradient(45deg, #f56565, #e53e3e)';
+                    nextBtn.style.fontSize = '1.1rem';
+                    nextBtn.style.padding = '15px 25px';
+                    nextBtn.style.whiteSpace = 'normal';
+                    nextBtn.style.lineHeight = '1.4';
+                    nextBtn.style.maxWidth = '400px';
+                    nextBtn.style.textAlign = 'center';
+                } else {
+                    // כפתור סיום רגיל
+                    nextBtn.textContent = '🏁 סִיֵּם מִבְחָן';
+                    nextBtn.style.background = 'linear-gradient(45deg, #4299e1, #3182ce)';
+                    nextBtn.style.fontSize = '1.3rem';
+                    nextBtn.style.padding = '15px 35px';
+                    nextBtn.style.whiteSpace = 'nowrap';
+                    nextBtn.style.lineHeight = 'normal';
+                    nextBtn.style.maxWidth = 'none';
+                    nextBtn.style.textAlign = 'center';
+                }
+            } else {
+                // כפתור הבא רגיל
+                nextBtn.textContent = 'הַבָּא ←';
+                nextBtn.style.background = 'linear-gradient(45deg, #4299e1, #3182ce)';
+                nextBtn.style.fontSize = '1.3rem';
+                nextBtn.style.padding = '15px 35px';
+                nextBtn.style.whiteSpace = 'nowrap';
+                nextBtn.style.lineHeight = 'normal';
+                nextBtn.style.maxWidth = 'none';
+                nextBtn.style.textAlign = 'center';
+            }
+        }
+
+        function selectAnswer(answerIndex) {
+            userAnswers[currentQuestion] = answerIndex;
+            
+            // עדכון תצוגה
+            document.querySelectorAll('.answer-option').forEach((option, index) => {
+                option.classList.toggle('selected', index === answerIndex);
+                option.querySelector('input').checked = index === answerIndex;
+            });
+            
+            // עדכון כפתור הבא/סיום
+            updateNextButton();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                // בדיקה שכל השאלות נענו לפני סיום המבחן
+                const unansweredQuestions = [];
+                for (let i = 0; i < questions.length; i++) {
+                    if (userAnswers[i] === undefined || userAnswers[i] === null) {
+                        unansweredQuestions.push(i + 1);
+                    }
+                }
+                
+                if (unansweredQuestions.length > 0) {
+                    // יצירת הודעה מפורטת עם רשימת השאלות החסרות
+                    let message = `⚠️ לֹא עָנִיתָ עַל כָּל הַשְּׁאֵלוֹת. עָלֶיךָ לִבְדֹּק שֶׁעָנִית עַל הַכֹּל לִפְנֵי הַגָּשַׁת הַמִּבְחָן.\n\n`;
+                    message += `📝 שאלות שלא נענו (${unansweredQuestions.length} מתוך ${questions.length}):\n`;
+                    
+                    // הוספת כל שאלה חסרה עם תחילת הטקסט שלה
+                    unansweredQuestions.forEach((questionNum, index) => {
+                        const questionText = questions[questionNum - 1].text;
+                        const shortText = questionText.length > 50 ? questionText.substring(0, 50) + '...' : questionText;
+                        message += `• שאלה ${questionNum}: ${shortText}\n`;
+                    });
+                    
+                    message += `\n❗ אנא השלם את התשובות החסרות לפני סיום המבחן.\n\n`;
+                    message += `האם תרצה לעבור לשאלה ${unansweredQuestions[0]} (הראשונה שלא נענתה)?`;
+                    
+                    const shouldGoToFirst = confirm(message);
+                    
+                    if (shouldGoToFirst) {
+                        // מעבר לשאלה הראשונה שלא נענתה
+                        currentQuestion = unansweredQuestions[0] - 1;
+                        showQuestion();
+                    }
+                    return;
+                }
+                
+                finishQuiz();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            calculateScore();
+            sendToGoogleSheets(); // שליחה אוטומטית לגוגל שיטס
+            showResults();
+        }
+
+        function calculateScore() {
+            totalScore = 0;
+            detailedResults = [];
+            
+            for (let i = 0; i < questions.length; i++) {
+                const question = questions[i];
+                const userAnswer = userAnswers[i];
+                let points = 0;
+                let status = 'incorrect';
+                
+                if (userAnswer === question.correct) {
+                    points = 1;
+                    status = 'correct';
+                } else if (question.partial.includes(userAnswer)) {
+                    points = 0.5;
+                    status = 'partial';
+                }
+                
+                totalScore += points;
+                
+                detailedResults.push({
+                    questionNumber: i + 1,
+                    questionText: question.text,
+                    userAnswer: userAnswer !== undefined ? question.answers[userAnswer] : 'לא נענה',
+                    correctAnswer: question.answers[question.correct],
+                    points: points,
+                    status: status
+                });
+            }
+        }
+
+        function sendToGoogleSheets() {
+            // הכנת נתונים לשליחה
+            const dataToSend = {
+                timestamp: studentData.timestamp,
+                firstName: studentData.firstName,
+                lastName: studentData.lastName,
+                studentClass: studentData.studentClass,
+                school: studentData.school,
+                parentPhone: studentData.parentPhone,
+                parentName: studentData.parentName,
+                finalScore: totalScore,
+                percentage: Math.round((totalScore / questions.length) * 100),
+                detailedAnswers: detailedResults.map(result => ({
+                    questionNumber: result.questionNumber,
+                    userAnswer: result.userAnswer,
+                    correctAnswer: result.correctAnswer,
+                    status: result.status === 'correct' ? 'נכון' : result.status === 'partial' ? 'חלקי' : 'שגוי',
+                    points: result.points
+                }))
+            };
+
+            // שליחה לגוגל שיטס באמצעות Google Apps Script
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6qXz9DdZNBUt0ca4Tj5BeKSPmwcK0RcIBx38PcZYRLx0uk-ZIDAHzR9onX-qNJ1zX/exec';
+            
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend)
+            })
+            .then(() => {
+                console.log('נתונים נשלחו בהצלחה לגוגל שיטס');
+                showSuccessMessage();
+            })
+            .catch(error => {
+                console.error('שגיאה בשליחת נתונים:', error);
+                showErrorMessage();
+            });
+        }
+
+        function showSuccessMessage() {
+            const saveMessage = document.getElementById('saveMessage');
+            saveMessage.style.display = 'block';
+            saveMessage.className = 'message success';
+            saveMessage.textContent = '✅ הַתּוֹצָאוֹת נִשְׁלְחוּ בְּהַצְלָחָה!';
+        }
+
+        function showErrorMessage() {
+            const saveMessage = document.getElementById('saveMessage');
+            saveMessage.style.display = 'block';
+            saveMessage.className = 'message error';
+            saveMessage.textContent = '⚠️ שְׁגִיאָה בִּשְׁלִיחַת הַתּוֹצָאוֹת. אָנָּא הִשְׁתַּמֵּשׁ בְּאֶפְשָׁרוּיוֹת הַגִּבּוּי לְמַטָּה.';
+        }
+
+        function showResults() {
+            document.getElementById('questionScreen').classList.remove('active');
+            document.getElementById('resultsScreen').classList.add('active');
+            
+            // הצגת הערה כללית בלבד
+            const scoreContainer = document.getElementById('scoreContainer');
+            
+            scoreContainer.innerHTML = `
+                <div style="background: linear-gradient(135deg, #4299e1, #3182ce); color: white; padding: 40px; border-radius: 25px; text-align: center; box-shadow: 0 15px 35px rgba(66, 153, 225, 0.3); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%); font-size: 2rem;">📝</div>
+                    <h3 style="font-size: 2.5rem; margin: 30px 0 20px 0; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">הַמִּבְחָן הֻשְׁלַם! 🎉</h3>
+                    <p style="font-size: 1.4rem; line-height: 1.6; margin: 0;">
+                        תודה על השתתפותך במבחן איתור נבחרת מדעני המחר!<br>
+                        הַתּוֹצָאוֹת נִשְׁלְחוּ לְצֶוֶת מֶרְכַּז הַמַּדָּעִים לִבְדִיקָה. 📊
+                    </p>
+                </div>
+            `;
+        }
+
+        function generateCSV(data) {
+            let csv = 'חותמת זמן,שם פרטי,שם משפחה,כיתה,בית ספר,טלפון הורה,שם הורה,ציון סופי,אחוז';
+            
+            // הוספת עמודות לכל שאלה
+            for (let i = 1; i <= questions.length; i++) {
+                csv += `,שאלה ${i} - תשובה,שאלה ${i} - נכונות,שאלה ${i} - נקודות`;
+            }
+            csv += '\n';
+            
+            // הוספת נתוני התלמיד
+            csv += `${data.timestamp},${data.firstName},${data.lastName},${data.studentClass},${data.school},${data.parentPhone},${data.parentName},${data.finalScore},${data.percentage}%`;
+            
+            // הוספת תשובות מפורטות
+            data.detailedAnswers.forEach(result => {
+                const statusHebrew = result.status === 'correct' ? 'נכון' : result.status === 'partial' ? 'חלקי' : 'שגוי';
+                csv += `,${result.userAnswer},${statusHebrew},${result.points}`;
+            });
+            
+            return csv;
+        }
+
+        function downloadResults() {
+            const dataToSave = {
+                timestamp: studentData.timestamp,
+                firstName: studentData.firstName,
+                lastName: studentData.lastName,
+                studentClass: studentData.studentClass,
+                school: studentData.school,
+                parentPhone: studentData.parentPhone,
+                parentName: studentData.parentName,
+                finalScore: totalScore,
+                percentage: Math.round((totalScore / questions.length) * 100),
+                detailedAnswers: detailedResults
+            };
+
+            const csv = generateCSV(dataToSave);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `תוצאות_מבחן_${dataToSave.firstName}_${dataToSave.lastName}.csv`;
+            link.click();
+            
+            alert('📥 הַקֹּבֶץ הוּרַד בְּהַצְלָחָה! תִּמְצְאוּ אוֹתוֹ בְּתִיקִיַּת הַהוֹרָדוֹת שֶׁלָּכֶם.');
+        }
+
+        function emailResults() {
+            const email = prompt('📧 הֵזִינוּ כְּתֹבֶת מֵיְל לִשְׁלִיחַת הַתּוֹצָאוֹת:');
+            if (!email) return;
+            
+            const dataToSave = {
+                timestamp: studentData.timestamp,
+                firstName: studentData.firstName,
+                lastName: studentData.lastName,
+                studentClass: studentData.studentClass,
+                school: studentData.school,
+                parentPhone: studentData.parentPhone,
+                parentName: studentData.parentName,
+                finalScore: totalScore,
+                percentage: Math.round((totalScore / questions.length) * 100),
+                detailedAnswers: detailedResults
+            };
+
+            // יצירת תוכן המייל
+            let emailBody = `🧪 תוצאות מבחן איתור לנבחרת מדעני המחר\n\n`;
+            emailBody += `👤 תלמיד/ה: ${dataToSave.firstName} ${dataToSave.lastName}\n`;
+            emailBody += `🏫 כיתה: ${dataToSave.studentClass}\n`;
+            emailBody += `🏢 בית ספר: ${dataToSave.school}\n`;
+            emailBody += `📊 ציון סופי: ${dataToSave.finalScore}/${questions.length} (${dataToSave.percentage}%)\n\n`;
+            emailBody += `📝 פירוט תשובות:\n`;
+            
+            dataToSave.detailedAnswers.forEach((result, index) => {
+                const statusHebrew = result.status === 'correct' ? 'נכון ✅' : result.status === 'partial' ? 'חלקי ⚡' : 'שגוי ❌';
+                emailBody += `שאלה ${index + 1}: ${statusHebrew} (${result.points} נקודות)\n`;
+            });
+
+            // פתיחת לקוח המייל
+            const subject = encodeURIComponent(`🧪 תוצאות מבחן - ${dataToSave.firstName} ${dataToSave.lastName}`);
+            const body = encodeURIComponent(emailBody);
+            window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+        }
+
+        function printResults() {
+            const dataToSave = {
+                timestamp: studentData.timestamp,
+                firstName: studentData.firstName,
+                lastName: studentData.lastName,
+                studentClass: studentData.studentClass,
+                school: studentData.school,
+                parentPhone: studentData.parentPhone,
+                parentName: studentData.parentName,
+                finalScore: totalScore,
+                percentage: Math.round((totalScore / questions.length) * 100),
+                detailedAnswers: detailedResults
+            };
+
+            // יצירת חלון הדפסה
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html dir="rtl">
+                <head>
+                    <title>🧪 תוצאות מבחן - ${dataToSave.firstName} ${dataToSave.lastName}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        .header { text-align: center; border-bottom: 3px solid #4299e1; padding-bottom: 25px; margin-bottom: 35px; }
+                        .student-info { background: #f7fafc; padding: 20px; border-radius: 15px; margin-bottom: 25px; }
+                        .score { font-size: 28px; font-weight: bold; text-align: center; margin: 25px 0; padding: 20px; background: #e6fffa; border-radius: 15px; }
+                        .question { margin: 20px 0; padding: 15px; border-right: 5px solid #ddd; border-radius: 10px; }
+                        .correct { border-right-color: #48bb78; background: #f0fff4; }
+                        .partial { border-right-color: #ed8936; background: #fffbf0; }
+                        .incorrect { border-right-color: #f56565; background: #fff5f5; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>🧪 מבחן איתור לנבחרת מדעני המחר של אשדוד 🚀</h1>
+                        <h2>📊 תוצאות מבחן</h2>
+                    </div>
+                    
+                    <div class="student-info">
+                        <h3>👤 פרטי התלמיד/ה:</h3>
+                        <p><strong>שם:</strong> ${dataToSave.firstName} ${dataToSave.lastName}</p>
+                        <p><strong>כיתה:</strong> ${dataToSave.studentClass}</p>
+                        <p><strong>בית ספר:</strong> ${dataToSave.school}</p>
+                        <p><strong>תאריך המבחן:</strong> ${dataToSave.timestamp}</p>
+                    </div>
+                    
+                    <div class="score">
+                        🎯 ציון סופי: ${dataToSave.finalScore}/${questions.length} (${dataToSave.percentage}%)
+                    </div>
+                    
+                    <h3>📝 פירוט תשובות:</h3>
+            `);
+
+            dataToSave.detailedAnswers.forEach((result, index) => {
+                const statusHebrew = result.status === 'correct' ? 'נכון ✅' : result.status === 'partial' ? 'חלקי ⚡' : 'שגוי ❌';
+                printWindow.document.write(`
+                    <div class="question ${result.status}">
+                        <h4>שאלה ${index + 1}: ${statusHebrew} (${result.points} נקודות)</h4>
+                        <p><strong>👤 התשובה שלך:</strong> ${result.userAnswer}</p>
+                        <p><strong>✅ התשובה הנכונה:</strong> ${result.correctAnswer}</p>
+                    </div>
+                `);
+            });
+
+            printWindow.document.write(`
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // הוספת אנימציית pulse לטיימר
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97445276a7822187',t:'MTc1NjA1Mzk0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
